@@ -2,14 +2,13 @@ import React, { Component } from "react";
 import { w3cwebsocket as W3CWebSocket } from "websocket";
 import Model from "./model";
 
-var client = new W3CWebSocket("ws://localhost:8008");
+var client = new W3CWebSocket("ws://localhost:8001");
 
 class App extends Component {
   state = {
     data: [],
   };
 
-  buttonClick = (data) => client.send(data)
 
   componentDidMount() {
     client.onopen = () => console.log("WebSocket Connected");
@@ -28,8 +27,6 @@ class App extends Component {
   render() {
     return (
       <div>
-        <button onClick={() => this.buttonClick(97)}>aç</button>
-        <button onClick={() => this.buttonClick(98)}>kapa</button>
         <div className={"row"} style={{ backgroundColor: "#404040", height: "95vh", width: "200vh" }}>
           <div className={"col-md-6"} style={{ padding: 40 }}>
             {this.state.data.map(data =>
@@ -38,7 +35,7 @@ class App extends Component {
           </div>
           <div className={"col-md-6"} style={{ backgroundColor: "#808080", padding: 40 }}>
             <div style={{ height: "200", width: "200" }}>
-              {/* <Model angle={data%180}/> */}
+              {/* <Model angle={120}/> */}
             </div>
           </div>
         </div>
